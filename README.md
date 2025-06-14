@@ -1,2 +1,2 @@
-# Speedrun Follower
+# SpeedrunFollower
 
