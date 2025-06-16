@@ -441,6 +441,24 @@ class ApiWorker(QThread):
                     else:
                         self.error.emit(error_msg) # Tüm yeniden denemeler bittiğinde hatayı yay
                         return # Hata yaydıktan sonra çık
+                except requests.exceptions.HTTPError as e: # HTTP hatalarını özel olarak yakala
+                    if e.response.status_code == 420: # 420 Too Many Requests hatası için özel işlem
+                        error_msg = f"API isteği hatası (Çok Fazla İstek): {e}\nURL: {self.url}"
+                        logger.warning(error_msg, exc_info=True)
+                        if retries_attempted < self.max_retries:
+                            # 420 hatası için daha uzun bir bekleme süresi, örneğin 60 saniye
+                            retry_wait_time = 60 * (2 ** retries_attempted) 
+                            logger.info(f"420 hatası için yeniden deneme {retries_attempted + 1}/{self.max_retries}: {retry_wait_time} saniye içinde: {self.url}")
+                            time.sleep(retry_wait_time)
+                            retries_attempted += 1
+                        else:
+                            self.error.emit(error_msg)
+                            return
+                    else: # Diğer HTTP hataları
+                        error_msg = f"API isteği hatası: {e}\nURL: {self.url}"
+                        logger.error(error_msg, exc_info=True) # İstek hatalarını kaydet
+                        self.error.emit(error_msg)
+                        return
                 except requests.exceptions.RequestException as e:
                     error_msg = f"API isteği hatası: {e}\nURL: {self.url}"
                     logger.error(error_msg, exc_info=True) # İstek hatalarını kaydet
@@ -3221,8 +3239,7 @@ class SpeedrunTrackerApp(QWidget):
                     # Seviye içindeki IL kategorilerini alfabetik olarak sırala
                     sorted_il_category_keys = sorted(level_data['categories'].keys(),
                                                     key=lambda c_key: level_data['categories'][c_key].get('display_name', '').lower())
-                    for category_key in sorted_il_category_keys:
-                        category_data = level_data['categories'].get(category_key)
+                    for category_key, category_data in level_data['categories'].items(): # Corrected iteration
                         if category_data:
                             item_widget = self._create_category_item_widget(category_data, category_key, game_id, current_level_id=level_id, current_level_name=level_data.get('name'), item_type='il')
                             il_category_widgets.append(item_widget)
