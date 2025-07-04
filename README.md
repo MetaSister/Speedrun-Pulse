@@ -5,5 +5,6 @@ Your data will not be lost because it keeps the tracked runs in the json file.
 
 NOT: If you have a problem or want a feature, you can open a topic.
 
-![Preview](https://github.com/user-attachments/assets/34d2d964-c626-4a4e-8860-c0e97f3cfc9c)
+![Preview](https://github.com/user-attachments/assets/355ed986-6888-427e-a0fe-fd2619af2098)
+
 
