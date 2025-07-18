@@ -47,8 +47,9 @@
 ----------------------
 • Speedrun Pulse was developed using the Python programming language and the PyQt5 library for a modern interface. It communicates with the official Speedrun.com API to provide live and accurate data.
 
+![Preview](https://github.com/user-attachments/assets/355ed986-6888-427e-a0fe-fd2619af2098)
+
 Speedruncom v1 API: https://github.com/speedruncomorg/api
 -----------------------------------------------------------
-![Preview](https://github.com/user-attachments/assets/355ed986-6888-427e-a0fe-fd2619af2098)
 
 
