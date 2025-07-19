@@ -1,5 +1,5 @@
 # Speedrun Pulse
-• Speedrun Pulse is an minimal desktop application designed for passionate members of the speedrunning community, allowing you to closely follow world records (WR) and leaderboards in your favorite games. It integrates with the Speedrun.com database to ensure you get the most up-to-date information instantly and never miss a record.
+• Speedrun Pulse is an minimal desktop application, allowing you to closely follow world records (WR) and leaderboards in your favorite games. It integrates with the Speedrun.com database to ensure you get the most up-to-date information instantly and never miss a record.
 
 • Overview
 ------------
