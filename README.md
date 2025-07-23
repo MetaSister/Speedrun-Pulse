@@ -43,7 +43,7 @@
 
 • Local and Secure Data Storage
 -------------------------------
-• All the runs you track are stored securely on your computer locally in the Tracked Runs.json file. None of your data is shared externally.
+• All the runs you track are stored securely on your computer locally in the Tracked Runs.json file.
 
 • Technical Structure
 ----------------------
