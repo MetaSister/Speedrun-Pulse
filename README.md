@@ -1,7 +1,6 @@
 # Speedrun Pulse
--------------------
-The Most Useful App for Tracking Records
 
+The Most Useful App for Tracking Records
 
 Star it if you like it
 
